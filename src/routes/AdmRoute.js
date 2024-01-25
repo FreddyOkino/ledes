@@ -19,6 +19,19 @@ router.put('/:id', async (req, res) => {
         })
     }
 })
+
+router.put('/rejeitar/:id', async (req, res) => {
+
+    try {
+        const resposta = await admService.rejeitar(req.params.id, req.body)
+        res.json(resposta)
+
+    } catch (error) {
+        res.status(error.status).json({
+            message: error.message
+        })
+    }
+})
 router.get('',async(req,res)=>{
     try {
         const resposta = await admService.buscarPendentes()

@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt')
 const perfilModel = require('../models/Perfil')
-const perfilAtualizadoModel = require('../models/PerfilAtualizado')
+
 
 module.exports = {
   buscarPorTodos: async () => {
@@ -20,33 +20,8 @@ module.exports = {
 
   editar: async (id, perfil) => {
     try {
-      const usuario = await perfilModel.findOne({ _id: id })
-      const copia = usuario
-      const busca = await perfilAtualizadoModel.findOne({ _id: id })
-      console.log(busca)
-      if (busca == null) {
-        const novo = {
-          _id: copia._id,
-          nome: perfil.nome || copia.nome,
-          cargo: perfil.cargo || copia.cargo,
-          setor: perfil.setor || copia.setor,
-          dataNascimento: perfil.dataNascimento || copia.dataNascimento,
-          telefone: perfil.telefone || copia.telefone,
-          modifacado: "pendente",
-          id: copia.id,
-          usuario: {
-            email: copia.usuario.email
-          },
-          imagem: copia.imagem
-
-        }
-        return await perfilAtualizadoModel.create(novo)
-      } else {
-
-        return await perfilAtualizadoModel.updateOne({ _id: id }, perfil)
-      }
-
-
+    perfil.modifacado="pendente"
+    return await perfilModel.updateOne({_id:id},perfil)
 
     } catch (error) {
       throw { message: error.message, status: 500 }
