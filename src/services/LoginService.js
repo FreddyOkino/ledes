@@ -20,6 +20,7 @@ module.exports = {
                             email: perfilEncontrado.usuario.email,
                             perfil: perfilEncontrado._id,
                             nome: perfilEncontrado.nome,
+                            _admin:perfilEncontrado._admin
 
                         }
                     } else {

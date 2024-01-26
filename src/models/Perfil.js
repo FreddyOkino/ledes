@@ -23,12 +23,12 @@ const perfilSchema = new Schema({
         required:false
     },
     telefone:{
-        type:Number,
+        type:String,
         required:false
     },
     usuario:{
         email:{type: String, required:true,unique:true },
-        senha:{type: String, required:true, select:false}
+        senha:{type: String, required:true}
     },
     modifacado:{
         type:String,
@@ -36,6 +36,9 @@ const perfilSchema = new Schema({
     },
     imagem:{
         type:String
+    },
+    _admin:{
+        type:Boolean
     }
 
     
