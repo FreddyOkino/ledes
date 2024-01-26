@@ -4,7 +4,7 @@ const perfilModel = require('../models/Perfil')
 
 module.exports = {
   atualizarAdm: async (id) => {
-    const busca = await perfilModel.findOne({ modifacado: "pendente" })
+    const busca = await perfilModel.findOne({ _id:id })
 
     busca.modifacado = "atualizado"
     return await perfilModel.updateOne({ _id: id }, busca)

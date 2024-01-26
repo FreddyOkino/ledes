@@ -32,7 +32,7 @@ module.exports = {
     try {
       perfil.usuario.senha = await bcrypt.hash(perfil.usuario.senha, 10)
       let novoPerfil = await perfilModel.create(perfil)
-      novoPerfil.usuario.senha = undefined
+      //novoPerfil.usuario.senha = undefined
       return novoPerfil
 
     } catch (error) {
